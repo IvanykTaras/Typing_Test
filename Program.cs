@@ -6,7 +6,11 @@ namespace Typing_Test
     internal class Program
     {
         static List<(string word, bool correct)> words = new List<(string word, bool correct)> ();
+
+
+
         
+
 
         static void Main(string[] args)
         {
@@ -14,6 +18,39 @@ namespace Typing_Test
             {
                 words.Add(("word",true));
             }
+
+            string inputWord = "";
+            while(!inputWord.Contains(' '))
+            {
+                Console.Clear ();
+                string correctWord = words[0].word;
+                show(words, ", ");
+                write("\n" + inputWord);
+
+                
+                char letter = Console.ReadKey().KeyChar;
+                inputWord += letter;
+                for (int j = 0; j < inputWord.Length; j++)
+                {
+                    try
+                    {
+                        if (inputWord[j] != correctWord[j])
+                        {
+                            words[0] = (words[0].word, false);
+                        }
+                        else {
+                            words[0] = (words[0].word, true);
+                        }
+
+                    }
+                    catch (Exception e)
+                    {
+                    }
+                }
+            }
+
+
+
             show(words, ", ");
            
             
