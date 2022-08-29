@@ -19,39 +19,10 @@ namespace Typing_Test
                 words.Add(("word",true));
             }
 
-            string inputWord = "";
-            while(!inputWord.Contains(' '))
-            {
-                Console.Clear ();
-                string correctWord = words[0].word;
-                show(words, ", ");
-                write("\n" + inputWord);
-
-                
-                char letter = Console.ReadKey().KeyChar;
-                inputWord += letter;
-                for (int j = 0; j < inputWord.Length; j++)
-                {
-                    try
-                    {
-                        if (inputWord[j] != correctWord[j])
-                        {
-                            words[0] = (words[0].word, false);
-                        }
-                        else {
-                            words[0] = (words[0].word, true);
-                        }
-
-                    }
-                    catch (Exception e)
-                    {
-                    }
-                }
-            }
+            
 
 
 
-            show(words, ", ");
            
             
             //Console.WriteLine(new String(inputWord(new List<char>()).ToArray()));
