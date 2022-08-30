@@ -5,52 +5,46 @@ namespace Typing_Test
 {
     internal class Program
     {
-        static List<(string word, bool correct)> words = new List<(string word, bool correct)> ();
+        static List<Word> words = new List<Word>();
 
 
 
-        
 
 
         static void Main(string[] args)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                words.Add(("word",true));
-            }
 
+            for (int i = 0; i<10; i++)
+	        {
+                words.Add((new Word("text")));
+                words[i].Same("text");
+	        }
+
+            show(words, " ");
+            
             
 
-
-
-           
-            
             //Console.WriteLine(new String(inputWord(new List<char>()).ToArray()));
         }
 
 
-        static void show(List<(string,bool)> arr, string separator)
+        static void show(List<Word> arr, string separator)
         {
-            foreach (var item in arr)
-            {
-                write(item.Item1 + separator, item.Item2 ? ConsoleColor.White : ConsoleColor.Red);
-            }
-        }
-
-        static List<char> inputWord(List<char> c)
-        {
-            char letter = Console.ReadKey().KeyChar;
-            if (letter != ' ' && char.IsLetter(letter))
-            {
-                c.Add(letter);
-                return inputWord(c);
-            }
-            else {
-                return c;
-            }
             
+            for (int i = 0; i < arr.Count; i++)
+            {
+                if (i == arr.Count - 1)
+                {
+                    write(arr[i].Get(), arr[i].GetWordStatus());
+                }
+                else
+                {
+                    write(arr[i].Get() + separator, arr[i].GetWordStatus());
+                }
+            }
         }
 
+        
 
         static void write(string text, ConsoleColor color = ConsoleColor.White )
         {   Console.ForegroundColor = color;
